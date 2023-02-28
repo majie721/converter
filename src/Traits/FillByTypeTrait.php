@@ -41,7 +41,7 @@ trait FillByTypeTrait
             return;
         }
 
-        if (is_numeric($value) && preg_match('/^[\d.]+$/', (string)$value)) {
+        if (is_float($value) || (is_string($value) && preg_match('/^[+-]?(\d*\.\d+([eE]?[+-]?\d+)?|\d+[eE][+-]?\d+)$/', $value))) {
             $this->setPropertyValue($propertyInfo, (float)$value);
             return;
         }
@@ -61,7 +61,7 @@ trait FillByTypeTrait
             return;
         }
 
-        if (is_numeric($value) && preg_match('/^[\d.]+$/', (string)$value)) {
+        if (is_numeric($value) && preg_match('/^-?\d+$/', (string)$value)) {
             $this->setPropertyValue($propertyInfo, (int)$value);
             return;
         }
@@ -80,7 +80,7 @@ trait FillByTypeTrait
             return;
         }
 
-        if (is_bool($value) || is_int($value)) {
+        if (is_bool($value)) {
             $this->setPropertyValue($propertyInfo, (bool)$value);
             return;
         }
