@@ -9,6 +9,6 @@ class ChargeAmount extends Converter
     /** @var ?string currency */
     public ?string $currency = null;
 
-    /** @var ?int amount */
-    public ?int $amount = null;
+    /** @var ?float amount */
+    public ?float $amount = null;
 }

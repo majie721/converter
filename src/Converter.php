@@ -87,4 +87,31 @@ class Converter implements \ArrayAccess
         return json_encode($this, JSON_THROW_ON_ERROR);
     }
 
+
+    /**
+     * 将对象数组转为当前对象数组
+     *
+     * @param $data
+     * @return $this
+     */
+    public static function fromItem($data): self
+    {
+        return new static($data);
+    }
+
+    /**
+     * 将多维数组转为当前对象数组
+     *
+     * @param array $list
+     * @return static[]
+     */
+    public static function fromList(array $list): array
+    {
+        $data = [];
+        foreach ($list as $item) {
+            $data[] = new static($item);
+        }
+        return $data;
+    }
+
 }
