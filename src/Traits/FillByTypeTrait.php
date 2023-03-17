@@ -80,7 +80,7 @@ trait FillByTypeTrait
             return;
         }
 
-        if (is_bool($value)) {
+        if (is_bool($value) || in_array($value,[0,1],true)) {
             $this->setPropertyValue($propertyInfo, (bool)$value);
             return;
         }
@@ -100,7 +100,7 @@ trait FillByTypeTrait
             return;
         }
 
-        if (false === $value) {
+        if (false === $value || $value===0) {
             $this->setPropertyValue($propertyInfo, false);
             return;
         }
@@ -121,7 +121,7 @@ trait FillByTypeTrait
             return;
         }
 
-        if (true === $value) {
+        if (true === $value || $value===1) {
             $this->setPropertyValue($propertyInfo, true);
             return;
         }
