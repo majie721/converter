@@ -214,10 +214,11 @@ trait FillByTypeTrait
             return;
         }
         if (is_array($value)) {
-            if ('' !== $propertyInfo->arrayType && !str_ends_with($propertyInfo->arrayType, ']')) {
-
-                foreach ($value as &$item) {
-                    $item = new $propertyInfo->arrayType($item);
+            if ('' !== $propertyInfo->arrayType && !str_ends_with($propertyInfo->arrayType, ']')) { //todo 多维数组处理后赋值
+                if(!in_array($propertyInfo->arrayType, ['int','float','bool','true','false','string','array','object','mixed'],true)){
+                    foreach ($value as &$item) {
+                        $item = new $propertyInfo->arrayType($item);
+                    }
                 }
             }
             $this->setPropertyValue($propertyInfo, $value);
