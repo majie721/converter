@@ -1,5 +1,5 @@
 {
-    "name": "majie/converter",
+    "name": "majie721/converter",
     "description": "The package can be parsed into corresponding to PHP array class.",
     "type": "library",
     "require": {
